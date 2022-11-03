@@ -55,7 +55,7 @@ hr{
 
 }
 
-.number-selected{
+.choix_nbre{
     background-color: gray;
 
 }
@@ -63,10 +63,10 @@ hr{
 .tile-start{
     background-color: whitesmoke;
 }
-.horizontal-line{
+.horizontal{
     border-bottom: 1px solid black;
 }
 
-.vertical-line{
+.vertical{
     border-right: 1px solid black;
 }

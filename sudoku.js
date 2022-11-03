@@ -1,9 +1,9 @@
 
+
+var message_erreur=""
 var nombre_choisi = null
-//var carreau_choisi = null
-
+var carreau_choisi = null
 var erreurs = 0
-
 var grille = [
     "---8---- 9",
     "-19--583-",
@@ -32,14 +32,16 @@ var solution = [
 ]
 
 
+
 window.onload = function(){
-    setGame();
+    jeu();
 }
 
-function setGame(){
-    //digits 0-9
+
+function jeu(){
+    
     for(let i = 1; i<=9; i++){
-        //<div id="1" class="number">1</div>
+       
         let nombre = document.createElement("div");
         nombre.id = i;
         nombre.innerText = i;
@@ -48,20 +50,21 @@ function setGame(){
         document.getElementById("chiffres").appendChild(nombre);
     }
 
-    //board 9x9
-    for(let r = 0; r < 9; r++){
-        for(let c = 0; c < 9; c++){
+
+   
+    for(let ligne = 0; ligne < 9; ligne++){
+        for(let colonne = 0; colonne < 9; colonne++){
             let carreau = document.createElement("div");
-            carreau.id = r.toString() + "-" + c.toString();
-            if(grille[r][c] != "-"){
-                carreau.innerText = grille[r][c];
+            carreau.id = ligne.toString() + "-" + colonne.toString();
+            if(grille[ligne][colonne] != "-"){
+                carreau.innerText = grille[ligne][colonne];
                 carreau.classList.add("carreau");
             } 
-            if(r == 2 || r == 5) {
-                carreau.classList.add("horizontal-line")
+            if(ligne == 2 || ligne == 5) {
+                carreau.classList.add("horizontal")
             } 
-            if(c == 2 || c == 5)  {
-                carreau.classList.add("vertical-line")
+            if(colonne == 2 || colonne == 5)  {
+                carreau.classList.add("vertical")
             }     
             carreau.addEventListener("click", gerer_case);
             carreau.classList.add("carreau");
@@ -72,15 +75,6 @@ function setGame(){
     }
 }
 
-function gerer_nombre(){
-    
-    if(nombre_choisi != null){
-        nombre_choisi.classList.remove("number-selected");        
-    }
-    
-    nombre_choisi = this;
-    nombre_choisi.classList.add("number-selected");
-}
 
 function gerer_case(){
     if(nombre_choisi){
@@ -89,15 +83,23 @@ function gerer_case(){
         }
         this.innerText = nombre_choisi.id
         let liste_chiffre = this.id.split("-");
-        let r = parseInt(liste_chiffre[0]);
-        let c = parseInt(liste_chiffre[1]);
+        let ligne = parseInt(liste_chiffre[0]);
+        let colonne = parseInt(liste_chiffre[1]);
 
-        if(solution[r][c] == nombre_choisi.id){
+        if(solution[ligne][colonne] == nombre_choisi.id){
             this.innerText = nombre_choisi.id
         }else{
             erreurs += 1;
-            document.getElementById("erreurs").innerText = erreurs
+            document.getElementById("erreurs").innerText = erreurs +" erreur(s)"
         }
     }
+}
 
+
+function gerer_nombre(){    
+    if(nombre_choisi != null){
+        nombre_choisi.classList.remove("choix_nbre");        
+    }    
+    nombre_choisi = this;
+    nombre_choisi.classList.add("choix_nbre");
 }
