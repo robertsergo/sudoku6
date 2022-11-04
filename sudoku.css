@@ -5,27 +5,25 @@ body{
     font-size: 14px;
 }
 
-
-hr{
-    width: 500px;
-}
 #erreurs{
     color: chocolate;
 }
 
 #grille{
     width: 450px;
-    height: 450px;
-   /* background-color: yellow;*/
+    height: 450px;   
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
 }
+
+hr{
+    width: 500px;
+}
 .carreau{
     width: 48px;
     height: 48px;
-    border: 1px solid lightgray;
-    
+    border: 1px solid lightgray;    
     font-size: 20px;
     font-weight: bold;
     display: flex;
@@ -70,3 +68,5 @@ hr{
 .vertical{
     border-right: 1px solid black;
 }
+
+source du menu: https://www.css3create.com/Menu-en-full-CSS-style-Lavalamp
